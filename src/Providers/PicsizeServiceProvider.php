@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Imeysam\Picsize\Picsize;
 use Imeysam\Picsize\Contracts\PicsizeInterface;
 use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class PicsizeServiceProvider extends ServiceProvider
 {
@@ -13,8 +14,8 @@ class PicsizeServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/picsize.php', 'picsize');
 
-        $this->app->singleton(PicsizeInterface::class, function ($app) {
-            return new Picsize(new ImageManager());
+        $this->app->scoped(PicsizeInterface::class, function ($app) {
+            return new Picsize(new ImageManager(new Driver()));
         });
 
         $this->app->alias(PicsizeInterface::class, 'laravel-picsize');
