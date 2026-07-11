@@ -53,15 +53,13 @@ class Picsize implements PicsizeInterface
             return $disk->url($outputFullPath);
         }
 
-        // خواندن فایل و تغییر سایز با متدهای جدید Intervention v3/v4
         $sourceStream = $disk->get($inputFullPath);
-        $image = $this->imageManager->read($sourceStream);
+        $image = $this->imageManager->decode($sourceStream);
 
-        $image->coverDown($width, $height);
+        $image->coverDown(width: $width, height: $height);
+        $encoded = $image->encodeUsingFileExtension($extension);
 
-        $encoded = $image->encodeByExtension($extension);
         $disk->put($outputFullPath, $encoded->toString());
-
         return $disk->url($outputFullPath);
     }
 }
