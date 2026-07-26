@@ -20,14 +20,14 @@ It’s designed for Laravel projects that need **on-demand thumbnails**, **resiz
 ✅ Automatic fallback image if source is missing  
 ✅ Respects Laravel’s Filesystem & URL helpers  
 ✅ Auto-creates output folders with proper permissions (local disks)  
-✅ Compatible with **Laravel 9.x – 12.x**
+✅ Compatible with **Laravel 11.x – 13.x**
 
 ---
 
 ## ⚙️ Requirements
 
 - **PHP** >= 8.1
-- **Laravel** >= 9.x  
+- **Laravel** >= 11.x  
 - [Intervention Image](http://image.intervention.io/) (included)
 
 ---
